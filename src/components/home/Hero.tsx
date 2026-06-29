@@ -1,38 +1,59 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
+import { motion, type Variants } from 'framer-motion'
 import { Button } from '@/components/ui/Button'
 import { JarIllustration } from '@/components/catalog/JarIllustration'
 
 const avatars = ['#E9B84A', '#B5602E', '#5A8A3C', '#C4831C']
+
+const container: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } },
+}
+const item: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+}
 
 export function Hero() {
   return (
     <section className="mx-auto max-w-7xl px-4 pt-8 sm:pt-12">
       <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
         {/* Copy */}
-        <div className="order-2 lg:order-1">
-          <p className="eyebrow">100% натурально</p>
-          <h1 className="mt-4 text-4xl leading-[1.08] sm:text-5xl xl:text-6xl">
+        <motion.div
+          className="order-2 lg:order-1"
+          variants={container}
+          initial="hidden"
+          animate="show"
+        >
+          <motion.p variants={item} className="eyebrow">100% натурально</motion.p>
+          <motion.h1
+            variants={item}
+            className="mt-4 text-4xl leading-[1.08] sm:text-5xl xl:text-6xl"
+          >
             Костный бульон
             <br />
             для здоровья
             <br />и энергии каждый день
-          </h1>
-          <p className="mt-5 max-w-md text-[15px] leading-relaxed text-ink-muted sm:text-base">
+          </motion.h1>
+          <motion.p
+            variants={item}
+            className="mt-5 max-w-md text-[15px] leading-relaxed text-ink-muted sm:text-base"
+          >
             Наш бульон сварен из фермерских костей и овощей по традиционному
             рецепту. Без добавок и консервантов.
-          </p>
+          </motion.p>
 
-          <div className="mt-7">
+          <motion.div variants={item} className="mt-7">
             <Link to="/catalog">
               <Button size="lg">
                 Выбрать бульон
                 <ArrowRight className="size-5" />
               </Button>
             </Link>
-          </div>
+          </motion.div>
 
-          <div className="mt-8 flex items-center gap-3">
+          <motion.div variants={item} className="mt-8 flex items-center gap-3">
             <div className="flex -space-x-3">
               {avatars.map((c, i) => (
                 <span
@@ -47,11 +68,16 @@ export function Hero() {
               Более <span className="font-bold text-ink">10 000+</span> довольных
               клиентов
             </p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Visual */}
-        <div className="order-1 lg:order-2">
+        <motion.div
+          className="order-1 lg:order-2"
+          initial={{ opacity: 0, scale: 0.94 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
           <div className="relative overflow-hidden rounded-card-lg bg-gradient-to-br from-brand-100 via-brand-200 to-brand-300 p-6 sm:p-10">
             <div
               className="absolute -right-10 -top-10 size-44 rounded-full bg-white/30 blur-2xl"
@@ -67,7 +93,7 @@ export function Hero() {
               className="relative mx-auto w-full max-w-sm drop-shadow-xl"
             />
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )
