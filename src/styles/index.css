@@ -1,0 +1,93 @@
+@import 'tailwindcss';
+
+/* ── BONE BOUILLON design tokens (derived from brand + mockup) ───────────── */
+@theme {
+  /* Brand */
+  --color-brand-50: #fdf8ec;
+  --color-brand-100: #fbf4e4;
+  --color-brand-200: #f6e6bf;
+  --color-brand-300: #f0d28c;
+  --color-brand-400: #f5c842; /* bright yellow: promo bar, icon chips */
+  --color-brand-500: #efb53a;
+  --color-brand-600: #e69e26; /* primary accent: CTA, prices, active */
+  --color-brand-700: #c4831c;
+  --color-brand-800: #97631a;
+
+  /* Surfaces */
+  --color-surface: #fcf7ec; /* page background (warm cream) */
+  --color-surface-2: #faf3e0; /* hero / sections */
+  --color-card: #ffffff;
+  --color-ink: #2b2a28; /* warm near-black text */
+  --color-ink-muted: #6b6a66;
+  --color-line: #ece7dc; /* subtle warm border */
+
+  /* Status */
+  --color-success: #5a8a3c;
+  --color-danger: #c0492f;
+
+  /* Typography */
+  --font-display: 'Playfair Display', ui-serif, Georgia, serif;
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+
+  /* Radii */
+  --radius-card: 20px;
+  --radius-card-lg: 24px;
+
+  /* Shadows */
+  --shadow-card: 0 4px 20px rgb(43 42 40 / 0.05);
+  --shadow-card-hover: 0 12px 32px rgb(43 42 40 / 0.1);
+  --shadow-pop: 0 16px 40px rgb(43 42 40 / 0.14);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Headings use the display serif by default */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Eyebrow / overline */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-brand-600);
+  font-size: 0.75rem;
+}
+
+/* Tabular numerals for prices */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Focus visibility */
+:focus-visible {
+  outline: 2px solid var(--color-brand-600);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Hide scrollbar utility for horizontal scrollers */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
