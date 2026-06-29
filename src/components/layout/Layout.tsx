@@ -1,10 +1,11 @@
 import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
+import { AnnouncementBar } from './AnnouncementBar'
+import { Header } from './Header'
+import { Footer } from './Footer'
+import { MobileBottomNav } from './MobileBottomNav'
 
-/**
- * App shell. The announcement bar, header, footer, mobile nav and cart drawer
- * are wired up in milestone M1; for now it hosts routing + scroll restoration.
- */
+/** App shell: announcement bar, header, routed content, footer, mobile tab bar. */
 export function Layout() {
   const { pathname } = useLocation()
 
@@ -14,9 +15,14 @@ export function Layout() {
 
   return (
     <div className="flex min-h-dvh flex-col bg-surface">
-      <main className="flex-1">
+      <AnnouncementBar />
+      <Header />
+      {/* extra bottom padding on mobile so content clears the fixed tab bar */}
+      <main className="flex-1 pb-20 lg:pb-0">
         <Outlet />
       </main>
+      <Footer />
+      <MobileBottomNav />
     </div>
   )
 }
