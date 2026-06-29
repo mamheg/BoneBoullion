@@ -4,6 +4,7 @@ import { AnnouncementBar } from './AnnouncementBar'
 import { Header } from './Header'
 import { Footer } from './Footer'
 import { MobileBottomNav } from './MobileBottomNav'
+import { CartDrawer } from '@/components/cart/CartDrawer'
 
 /** App shell: announcement bar, header, routed content, footer, mobile tab bar. */
 export function Layout() {
@@ -23,6 +24,7 @@ export function Layout() {
       </main>
       <Footer />
       <MobileBottomNav />
+      <CartDrawer />
     </div>
   )
 }
