@@ -31,7 +31,7 @@ export function CategoryList({
                 to={to}
                 end={cat.id === 'all'}
                 className={({ isActive }) =>
-                  `flex items-center justify-between rounded-xl px-3 py-2.5 text-[15px] font-medium transition-colors ${
+                  `flex items-center justify-between rounded-lg px-3 py-2.5 text-[15px] font-medium transition-colors ${
                     isActive
                       ? 'bg-brand-50 text-brand-700'
                       : 'text-ink hover:bg-surface-2'
