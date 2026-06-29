@@ -1,4 +1,5 @@
 import { Link, NavLink } from 'react-router-dom'
+import { AnimatePresence, motion } from 'framer-motion'
 import { Heart, Menu, ShoppingBag, User, X } from 'lucide-react'
 import { Logo } from './Logo'
 import { SearchBar } from '@/components/ui/SearchBar'
@@ -8,11 +9,21 @@ import { useFavorites } from '@/context/FavoritesContext'
 import { useUI } from '@/context/UIContext'
 
 function CountBadge({ count }: { count: number }) {
-  if (count <= 0) return null
   return (
-    <span className="absolute -right-1.5 -top-1.5 flex min-w-5 items-center justify-center rounded-full bg-brand-600 px-1 text-[11px] font-bold text-white tnum">
-      {count}
-    </span>
+    <AnimatePresence>
+      {count > 0 && (
+        <motion.span
+          key={count}
+          initial={{ scale: 0.4, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.4, opacity: 0 }}
+          transition={{ type: 'spring', duration: 0.3, bounce: 0 }}
+          className="absolute -right-1.5 -top-1.5 flex min-w-5 items-center justify-center rounded-full bg-brand-600 px-1 text-[11px] font-bold text-white tnum"
+        >
+          {count}
+        </motion.span>
+      )}
+    </AnimatePresence>
   )
 }
 
@@ -95,7 +106,7 @@ export function Header() {
             type="button"
             onClick={toggleMobileMenu}
             aria-label={isMobileMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
-            className="flex size-10 items-center justify-center rounded-full text-ink hover:bg-brand-50"
+            className="flex size-10 items-center justify-center rounded-full text-ink transition-[transform,background-color] duration-150 ease-out hover:bg-brand-50 active:scale-90"
           >
             {isMobileMenuOpen ? (
               <X className="size-6" strokeWidth={2.2} />
@@ -108,7 +119,7 @@ export function Header() {
             type="button"
             onClick={openCart}
             aria-label="Корзина"
-            className="relative flex size-10 items-center justify-center rounded-full text-ink hover:bg-brand-50"
+            className="relative flex size-10 items-center justify-center rounded-full text-ink transition-[transform,background-color] duration-150 ease-out hover:bg-brand-50 active:scale-90"
           >
             <ShoppingBag className="size-6" strokeWidth={2} />
             <CountBadge count={itemCount} />

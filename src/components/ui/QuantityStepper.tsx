@@ -16,7 +16,7 @@ export function QuantityStepper({
         type="button"
         onClick={() => onChange(value - 1)}
         aria-label="Уменьшить количество"
-        className={`${dim} flex items-center justify-center rounded-full text-ink transition-colors hover:bg-brand-100`}
+        className={`${dim} flex items-center justify-center rounded-full text-ink transition-[transform,background-color] duration-150 ease-out hover:bg-brand-100 active:scale-90`}
       >
         <Minus className="size-4" strokeWidth={2.6} />
       </button>
@@ -25,7 +25,7 @@ export function QuantityStepper({
         type="button"
         onClick={() => onChange(value + 1)}
         aria-label="Увеличить количество"
-        className={`${dim} flex items-center justify-center rounded-full text-ink transition-colors hover:bg-brand-100`}
+        className={`${dim} flex items-center justify-center rounded-full text-ink transition-[transform,background-color] duration-150 ease-out hover:bg-brand-100 active:scale-90`}
       >
         <Plus className="size-4" strokeWidth={2.6} />
       </button>
