@@ -1,8 +1,15 @@
+import { Hero } from '@/components/home/Hero'
+import { BenefitsBar } from '@/components/home/BenefitsBar'
+import { PopularSection } from '@/components/home/PopularSection'
+import { NewsletterSection } from '@/components/home/NewsletterSection'
+
 export function HomePage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-16">
-      <h1 className="text-4xl">BONE BOUILLON</h1>
-      <p className="mt-4 text-ink-muted">Главная страница — собирается в M2.</p>
-    </div>
+    <>
+      <Hero />
+      <BenefitsBar />
+      <PopularSection />
+      <NewsletterSection />
+    </>
   )
 }
