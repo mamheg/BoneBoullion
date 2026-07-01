@@ -65,7 +65,7 @@ export function ProductCard({ product }: { product: Product }) {
                 {formatPrice(product.oldPrice)}
               </span>
             )}
-            <span className="font-display text-xl font-bold text-ink tnum">
+            <span className="font-sans text-xl font-extrabold text-ink tnum">
               {formatPrice(product.price)}
             </span>
           </div>

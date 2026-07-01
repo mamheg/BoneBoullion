@@ -23,7 +23,7 @@ export function CartSummary({
       </div>
       <div className="flex justify-between border-t border-line pt-2.5 text-base">
         <dt className="font-display font-bold">Итого</dt>
-        <dd className="font-display text-lg font-bold text-ink tnum">
+        <dd className="font-sans text-lg font-extrabold text-ink tnum">
           {formatPrice(total)}
         </dd>
       </div>

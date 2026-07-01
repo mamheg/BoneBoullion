@@ -84,7 +84,7 @@ export function ProductPage() {
                 {formatPrice(product.oldPrice)}
               </span>
             )}
-            <span className="font-display text-3xl font-bold text-ink tnum">
+            <span className="font-sans text-3xl font-extrabold text-ink tnum">
               {formatPrice(product.price)}
             </span>
           </div>
