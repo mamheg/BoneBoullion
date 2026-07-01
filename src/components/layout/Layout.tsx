@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import { Header } from './Header'
 import { Footer } from './Footer'
 import { MobileBottomNav } from './MobileBottomNav'
+import { InstallPrompt } from '@/components/pwa/InstallPrompt'
 
 /** App shell: announcement bar, header, routed content, footer, mobile tab bar. */
 export function Layout() {
@@ -21,6 +22,7 @@ export function Layout() {
       </main>
       <Footer />
       <MobileBottomNav />
+      <InstallPrompt />
     </div>
   )
 }
