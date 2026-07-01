@@ -59,7 +59,7 @@ function ActionLink({
 export function Header() {
   const { itemCount } = useCart()
   const { count: favCount } = useFavorites()
-  const { isMobileMenuOpen, toggleMobileMenu, closeMobileMenu, openCart } = useUI()
+  const { isMobileMenuOpen, toggleMobileMenu, closeMobileMenu } = useUI()
 
   return (
     <header className="sticky top-0 z-40 border-b border-line/70 bg-surface/90 backdrop-blur">
@@ -85,17 +85,12 @@ export function Header() {
             label="Профиль"
             icon={<User className="size-5" strokeWidth={2} />}
           />
-          <button
-            type="button"
-            onClick={openCart}
-            className="group flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium text-ink transition-colors hover:text-brand-700"
-          >
-            <span className="relative">
-              <ShoppingBag className="size-5" strokeWidth={2} />
-              <CountBadge count={itemCount} />
-            </span>
-            <span className="hidden xl:inline">Корзина</span>
-          </button>
+          <ActionLink
+            to="/cart"
+            label="Корзина"
+            count={itemCount}
+            icon={<ShoppingBag className="size-5" strokeWidth={2} />}
+          />
         </nav>
       </div>
 
@@ -115,15 +110,14 @@ export function Header() {
             )}
           </button>
           <Logo />
-          <button
-            type="button"
-            onClick={openCart}
+          <Link
+            to="/cart"
             aria-label="Корзина"
             className="relative flex size-10 items-center justify-center rounded-full text-ink transition-[transform,background-color] duration-150 ease-out hover:bg-brand-50 active:scale-90"
           >
             <ShoppingBag className="size-6" strokeWidth={2} />
             <CountBadge count={itemCount} />
-          </button>
+          </Link>
         </div>
         <div className="px-4 pb-3">
           <SearchBar />
