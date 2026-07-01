@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { Trash2 } from 'lucide-react'
 import type { CartLine } from '@/hooks/useCartLines'
 import { formatPrice } from '@/brand/config'
-import { JarIllustration } from '@/components/catalog/JarIllustration'
+import { ProductImage } from '@/components/catalog/ProductImage'
 import { QuantityStepper } from '@/components/ui/QuantityStepper'
 import { useCart } from '@/context/CartContext'
 
@@ -23,7 +23,7 @@ export function CartLineItem({
         onClick={onNavigate}
         className="flex size-20 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-surface-2"
       >
-        <JarIllustration accent={product.accent} title={product.name} className="size-full p-2" />
+        <ProductImage product={product} className="rounded-xl" jarClassName="p-2" />
       </Link>
 
       <div className="flex min-w-0 flex-1 flex-col">

@@ -4,7 +4,7 @@ import { Check, Heart, Plus } from 'lucide-react'
 import type { Product } from '@/types'
 import { formatPrice } from '@/brand/config'
 import { ProductBadge } from '@/components/ui/Badge'
-import { JarIllustration } from './JarIllustration'
+import { ProductImage } from './ProductImage'
 import { useCart } from '@/context/CartContext'
 import { useFavorites } from '@/context/FavoritesContext'
 
@@ -21,10 +21,9 @@ export function ProductCard({ product }: { product: Product }) {
         to={`/product/${product.slug}`}
         className="relative block aspect-square overflow-hidden bg-surface-2"
       >
-        <JarIllustration
-          accent={product.accent}
-          title={product.name}
-          className="size-full p-6 transition-transform duration-500 group-hover:scale-105"
+        <ProductImage
+          product={product}
+          className="transition-transform duration-500 group-hover:scale-105"
         />
         {product.badges.length > 0 && (
           <div className="absolute left-3 top-3 flex gap-1.5">

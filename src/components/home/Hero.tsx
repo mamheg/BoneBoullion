@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { motion, type Variants } from 'framer-motion'
 import { Button } from '@/components/ui/Button'
-import { JarIllustration } from '@/components/catalog/JarIllustration'
 
 const container: Variants = {
   hidden: {},
@@ -60,19 +59,11 @@ export function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
-          <div className="relative overflow-hidden rounded-card-lg bg-gradient-to-br from-brand-100 via-brand-200 to-brand-300 p-6 sm:p-10">
-            <div
-              className="absolute -right-10 -top-10 size-44 rounded-full bg-white/30 blur-2xl"
-              aria-hidden
-            />
-            <div
-              className="absolute -bottom-12 -left-8 size-40 rounded-full bg-white/20 blur-2xl"
-              aria-hidden
-            />
-            <JarIllustration
-              accent="#E9B84A"
-              title="Куриный бульон"
-              className="relative mx-auto w-full max-w-sm drop-shadow-xl"
+          <div className="relative overflow-hidden rounded-card-lg shadow-card ring-1 ring-line/60">
+            <img
+              src="/images/hero.jpg"
+              alt="Костный бульон BONE BOUILLON в стеклянной банке"
+              className="aspect-[4/3] w-full object-cover lg:aspect-[5/4]"
             />
           </div>
         </motion.div>
