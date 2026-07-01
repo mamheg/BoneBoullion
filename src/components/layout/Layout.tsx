@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
-import { AnnouncementBar } from './AnnouncementBar'
 import { Header } from './Header'
 import { Footer } from './Footer'
 import { MobileBottomNav } from './MobileBottomNav'
@@ -16,7 +15,6 @@ export function Layout() {
 
   return (
     <div className="flex min-h-dvh flex-col bg-surface">
-      <AnnouncementBar />
       <Header />
       {/* extra bottom padding on mobile so content clears the fixed tab bar */}
       <main className="flex-1 pb-20 lg:pb-0">
