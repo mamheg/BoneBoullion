@@ -12,6 +12,8 @@ export const CONTACT = {
   phone: '+7 (495) 000-00-00',
   email: 'hello@bonebouillon.ru',
   telegram: 'https://t.me/bonebouillon',
+  // TODO: заменить на реальную ссылку Telegram-канала бренда
+  telegramChannel: 'https://t.me/bonebouillon',
   instagram: 'https://instagram.com/bonebouillon',
 } as const
 
