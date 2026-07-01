@@ -4,8 +4,6 @@ import { motion, type Variants } from 'framer-motion'
 import { Button } from '@/components/ui/Button'
 import { JarIllustration } from '@/components/catalog/JarIllustration'
 
-const avatars = ['#E9B84A', '#B5602E', '#5A8A3C', '#C4831C']
-
 const container: Variants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } },
@@ -53,22 +51,6 @@ export function Hero() {
             </Link>
           </motion.div>
 
-          <motion.div variants={item} className="mt-8 flex items-center gap-3">
-            <div className="flex -space-x-3">
-              {avatars.map((c, i) => (
-                <span
-                  key={i}
-                  className="size-9 rounded-full border-2 border-surface"
-                  style={{ background: c }}
-                  aria-hidden
-                />
-              ))}
-            </div>
-            <p className="text-sm text-ink-muted">
-              Более <span className="font-bold text-ink">10 000+</span> довольных
-              клиентов
-            </p>
-          </motion.div>
         </motion.div>
 
         {/* Visual */}
