@@ -6,7 +6,7 @@ import { formatPrice } from '@/brand/config'
 import { Button } from '@/components/ui/Button'
 import { QuantityStepper } from '@/components/ui/QuantityStepper'
 import { ProductBadge } from '@/components/ui/Badge'
-import { JarIllustration } from '@/components/catalog/JarIllustration'
+import { ProductImage } from '@/components/catalog/ProductImage'
 import { useCart } from '@/context/CartContext'
 import { useFavorites } from '@/context/FavoritesContext'
 
@@ -58,19 +58,19 @@ export function ProductPage() {
 
       <div className="mt-6 grid gap-8 lg:grid-cols-2 lg:gap-12">
         {/* gallery */}
-        <div className="relative overflow-hidden rounded-card-lg bg-gradient-to-br from-brand-100 to-brand-200 p-8 sm:p-12">
+        <div
+          className={`relative aspect-square overflow-hidden rounded-card-lg ${
+            product.image ? 'ring-1 ring-line/60' : 'bg-gradient-to-br from-brand-100 to-brand-200 p-8 sm:p-12'
+          }`}
+        >
           {product.badges.length > 0 && (
-            <div className="absolute left-5 top-5 flex gap-2">
+            <div className="absolute left-5 top-5 z-10 flex gap-2">
               {product.badges.map((b) => (
                 <ProductBadge key={b} badge={b} />
               ))}
             </div>
           )}
-          <JarIllustration
-            accent={product.accent}
-            title={product.name}
-            className="mx-auto w-full max-w-sm drop-shadow-xl"
-          />
+          <ProductImage product={product} jarClassName="p-8" />
         </div>
 
         {/* details */}
