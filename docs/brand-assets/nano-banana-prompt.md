@@ -1,112 +1,136 @@
-# BONE BOUILLON — master-промпт для nano-banana (генерация всех картинок сайта)
+# BONE BOUILLON — master-промпт для nano-banana (все картинки сайта)
 
-Цель: одним набором указаний получить **реалистичные, настоящие** фото для сайта —
-логотип, главную картинку (hero) и карточки товаров. Стиль единый, продукт узнаваемый.
+Цель: получить **реалистичные фото** для КАЖДОГО товара, который сейчас есть на сайте
+(каталог `src/data/catalog.ts`), плюс логотип и главную картинку (hero). Стиль единый,
+упаковка — как на реальных фото Instagram @bone_bouillon.
 
 ## Что приложить как референс (в чат nano-banana)
 
-1. **Скриншоты Instagram** @bone_bouillon, которые ты уже прислал (реальные банки/пакеты/наклейки — чтобы совпали упаковка, цвет бульона, круглые наклейки, HALAL).
-2. **Логотип-исходник** из `assets/brand/` (для стиля вордмарка BONE BOUILLON и «солнышка»).
-3. Фирменный цвет — янтарный **#E69E26** (упомянут в промпте текстом).
+1. **Скриншоты Instagram @bone_bouillon** (реальная упаковка: стеклянная банка с золотистым бульоном, круглая наклейка «Bone bouillon / костный бульон», значок HALAL) — чтобы тара и наклейка совпали.
+2. **Логотип-исходник** из `assets/brand/`.
+3. Фирменный цвет — янтарный **#E69E26**.
 
-> Как пользоваться: вставь **«ГЛОБАЛЬНЫЙ СТИЛЬ»** один раз, затем прогоняй по одному блоку из **«СПИСОК КАДРОВ»** (nano-banana делает по одной картинке за раз). Для каждого кадра прикладывай те же референсы — так упаковка и свет останутся консистентными.
+> nano-banana делает по одной картинке за раз. Вставь **«ГЛОБАЛЬНЫЙ СТИЛЬ»** в начало, затем прогоняй по одному блоку из **«СПИСОК КАДРОВ»**. К каждому кадру прикладывай те же референсы — так упаковка, свет и фон останутся одинаковыми во всей сетке.
 
 ---
 
-## ГЛОБАЛЬНЫЙ СТИЛЬ (вставить один раз / в начало каждого кадра)
+## ГЛОБАЛЬНЫЙ СТИЛЬ (вставлять в начало каждого кадра)
 
 ```
 Photorealistic commercial food photography for a premium bone-broth brand
-"BONE BOUILLON" (халяль, домашний фермерский костный бульон). Real product photos,
-NOT 3D renders, NOT illustrations. Natural soft daylight from the side, gentle
-shadows, shallow depth of field. Warm, appetizing palette built around amber/gold
-(#E69E26) and clean cream background (#FCF7EC). Clean, uncluttered composition with
-generous negative space. The broth is glossy, translucent, golden. Consistent props
-across all shots: light stone/wood surface, a few natural accents (garlic clove,
-parsley sprig, whole black pepper, pink Himalayan salt). Brand feel: honest, natural,
-homemade, healthy. High resolution, crisp focus, professional studio quality.
-Packaging must match the reference photos: clear glass jar with golden broth and a
-round brand sticker; kraft-paper cup with lid; zip freezer bag. Keep the round
-"Bone bouillon / костный бульон" sticker and HALAL mark readable but not distorted.
+"BONE BOUILLON" (halal, homemade farm-style broth). REAL product photos, NOT 3D
+renders, NOT illustrations. Natural soft daylight from the side, gentle shadows,
+shallow depth of field, glossy translucent broth. Warm appetizing palette around
+amber/gold (#E69E26) on a clean cream background (#FCF7EC). Uncluttered, centered
+composition with generous negative space, consistent light stone surface and the
+same soft props across every shot (garlic, parsley, whole peppercorns, pink salt).
+Packaging matches the reference photos: a clear glass jar of broth with a round
+"Bone bouillon / костный бульон" sticker and a small HALAL mark, sticker readable and
+undistorted. Professional studio quality, crisp focus, high resolution. Keep the SAME
+jar shape, lighting and background in all shots so they form one cohesive product set.
 ```
 
 ---
 
-## СПИСОК КАДРОВ (по одному = одна картинка)
+## СПИСОК КАДРОВ
 
-### 1. Логотип — `public/images/brand/logo.png` (прозрачный фон)
+### Логотип — `public/images/brand/logo.png` (прозрачный фон, 1:1)
 ```
-[ГЛОБАЛЬНЫЙ СТИЛЬ] + Design a clean vector-style wordmark logo "BONE BOUILLON"
-in two lines, elegant modern serif, deep amber #E69E26, with a small minimalist sun
-icon next to "BONE". Transparent background, centered, crisp edges, no photo, no
-mockup — just the logo mark. Also provide a white version for dark backgrounds.
-Aspect ratio 1:1.
-```
-
-### 2. Hero — `public/images/hero.jpg` (широкий, горизонтальный)
-```
-[ГЛОБАЛЬНЫЙ СТИЛЬ] + Hero shot: a clear glass jar of golden beef bone broth with the
-round brand sticker, front and centre on a light stone board. Around it: a small
-bowl of steaming broth, garlic, fresh parsley, whole peppercorns, a pinch of pink
-salt. Soft morning light, steam rising, cozy premium mood. Lots of clean cream
-background space on the LEFT for website headline text overlay. Landscape 16:9.
+[ГЛОБАЛЬНЫЙ СТИЛЬ] + Clean wordmark logo "BONE BOUILLON" in two lines, elegant modern
+serif, deep amber #E69E26, small minimalist sun icon next to "BONE". Transparent
+background, crisp vector-like edges, no photo/mockup. Also output a white version for
+dark backgrounds. 1:1.
 ```
 
-### 3. Костный бульон говяжий, в стекле — `public/images/beef-glass.jpg`
+### Hero — `public/images/hero.jpg` (16:9)
 ```
-[ГЛОБАЛЬНЫЙ СТИЛЬ] + Single clear glass jar filled with glossy golden BEEF bone
-broth, round brand sticker facing camera, on a light surface with a garlic clove and
-parsley. Centered product shot, clean cream background, soft shadow. Square 1:1.
-```
-
-### 4. Костный бульон овощной, в стекле — `public/images/veg-glass.jpg`
-```
-[ГЛОБАЛЬНЫЙ СТИЛЬ] + Single clear glass jar of lighter golden VEGETABLE bone broth,
-round brand sticker, with carrot, onion and fresh herbs beside it as a hint of
-vegetables. Centered, clean cream background. Square 1:1.
+[ГЛОБАЛЬНЫЙ СТИЛЬ] + Hero shot: a clear glass jar of golden bone broth with the round
+brand sticker, centre, on a light stone board; a small bowl of steaming broth, garlic,
+parsley, peppercorns, pink salt around it. Soft morning light, rising steam, cozy
+premium mood. Keep the LEFT third as clean cream background for website headline text.
+16:9 landscape.
 ```
 
-### 5. Свежезамороженный бульон, пакет — `public/images/frozen-bag.jpg`
-```
-[ГЛОБАЛЬНЫЙ СТИЛЬ] + A transparent zip freezer bag holding a block of frozen golden
-bone broth with the round brand sticker, lying on a light surface with a touch of
-frost/cold vapor. Clean cream background, appetizing. Square 1:1.
-```
+### Карточки товаров (квадрат 1:1 каждая) — по каждой позиции каталога
 
-### 6. Бульон в кубиках, пакет — `public/images/frozen-cubes.jpg`
+**1. Куриный бульон — `public/images/products/chicken.jpg`**
 ```
-[ГЛОБАЛЬНЫЙ СТИЛЬ] + A transparent zip bag with neat portioned frozen broth CUBES,
-round brand sticker on the bag, light frost, on a clean surface. Cream background,
-crisp focus. Square 1:1.
+[ГЛОБАЛЬНЫЙ СТИЛЬ] + Glass jar of clear GOLDEN CHICKEN bone broth, brand sticker to
+camera, a small piece of chicken and parsley beside it. Centered, cream background. 1:1.
 ```
-
-### 7. Костное масло (Bone oil) — `public/images/bone-oil.jpg`
+**2. Говяжий бульон — `public/images/products/beef.jpg`**
 ```
-[ГЛОБАЛЬНЫЙ СТИЛЬ] + A glass jar of pale creamy solidified BONE MARROW OIL ("костное
-масло") with a dark green round brand sticker and HALAL mark, on a light surface with
-a searing pan hint and herbs (it's used for frying). Warm, premium. Square 1:1.
+[ГЛОБАЛЬНЫЙ СТИЛЬ] + Glass jar of rich amber-brown BEEF bone broth, brand sticker,
+a beef marrow bone and parsley beside it. Centered, cream background. 1:1.
 ```
-
-### 8. (опц.) Крафт-стакан — `public/images/kraft-cup.jpg`
+**3. Бульон из индейки — `public/images/products/turkey.jpg`**
 ```
-[ГЛОБАЛЬНЫЙ СТИЛЬ] + A kraft-paper cup with lid and the round red brand sticker,
-filled with warm golden broth (lid ajar, steam), on a light surface with herbs.
-Clean cream background. Square 1:1.
+[ГЛОБАЛЬНЫЙ СТИЛЬ] + Glass jar of light golden TURKEY broth, brand sticker, a turkey
+cut and herbs beside it. Centered, cream background. 1:1.
+```
+**4. Бараний бульон — `public/images/products/lamb.jpg`**
+```
+[ГЛОБАЛЬНЫЙ СТИЛЬ] + Glass jar of deep amber LAMB broth, brand sticker, warm oriental
+spices (cumin, bay leaf) beside it. Centered, cream background. 1:1.
+```
+**5. Рыбный бульон — `public/images/products/fish.jpg`**
+```
+[ГЛОБАЛЬНЫЙ СТИЛЬ] + Glass jar of pale clear FISH broth, brand sticker, a piece of
+white fish, lemon and dill beside it. Centered, cream background. 1:1.
+```
+**6. Крем-суп тыквенный — `public/images/products/pumpkin-soup.jpg`**
+```
+[ГЛОБАЛЬНЫЙ СТИЛЬ] + A bowl of creamy ORANGE PUMPKIN soup with a swirl of cream and
+pumpkin seeds, next to a matching jar with brand sticker. Cream background. 1:1.
+```
+**7. Куриный суп с лапшой — `public/images/products/chicken-noodle.jpg`**
+```
+[ГЛОБАЛЬНЫЙ СТИЛЬ] + A bowl of CHICKEN NOODLE soup (noodles, carrot, herbs, chicken),
+next to a matching jar with brand sticker. Cream background. 1:1.
+```
+**8. Грибной крем-суп — `public/images/products/mushroom-soup.jpg`**
+```
+[ГЛОБАЛЬНЫЙ СТИЛЬ] + A bowl of creamy beige MUSHROOM soup with sautéed mushroom slices
+and thyme, next to a matching jar with brand sticker. Cream background. 1:1.
+```
+**9. Куриный бульон для детей — `public/images/products/kids-chicken.jpg`**
+```
+[ГЛОБАЛЬНЫЙ СТИЛЬ] + Glass jar of very light gentle CHICKEN broth for babies (no salt),
+brand sticker, soft pastel styling, a carrot and zucchini beside it, tender caring
+mood. Centered, cream background. 1:1.
+```
+**10. Бульон из индейки для детей — `public/images/products/kids-turkey.jpg`**
+```
+[ГЛОБАЛЬНЫЙ СТИЛЬ] + Glass jar of very light gentle TURKEY broth for babies (no salt),
+brand sticker, soft pastel styling, carrot and zucchini beside it. Centered, cream
+background. 1:1.
+```
+**11. Набор «Классика» — `public/images/products/set-classic.jpg`**
+```
+[ГЛОБАЛЬНЫЙ СТИЛЬ] + THREE glass jars together (chicken, beef, turkey broths), all with
+brand stickers, arranged as a gift set on a light surface with herbs and garlic.
+Centered, cream background. 1:1.
+```
+**12. Набор «Wellness» — `public/images/products/set-wellness.jpg`**
+```
+[ГЛОБАЛЬНЫЙ СТИЛЬ] + SIX jars/cups assortment of broths and a soup, arranged in an open
+kraft gift box with a brand tag, premium wellness set look. Cream background. 1:1.
 ```
 
 ---
 
 ## Карта «картинка → слот на сайте»
 
-| Кадр | Файл | Куда идёт |
+| Кадр | Файл | Куда идёт (в коде) |
 |---|---|---|
-| 1 | `public/images/brand/logo.png` | favicon / PWA-иконки / компонент `Logo` |
-| 2 | `public/images/hero.jpg` | Hero на главной (`src/components/home/Hero.tsx`) |
-| 3–8 | `public/images/<slug>.jpg` | карточки товаров (`Product.image` в `src/data/catalog.ts`) + карточка товара / корзина |
+| Логотип | `public/images/brand/logo.png` | favicon / PWA-иконки / компонент `Logo` |
+| Hero | `public/images/hero.jpg` | `src/components/home/Hero.tsx` |
+| 1–12 | `public/images/products/<id>.jpg` | поле `Product.image` в `src/data/catalog.ts` (id совпадает: chicken, beef, turkey, lamb, fish, pumpkin-soup, chicken-noodle, mushroom-soup, kids-chicken, kids-turkey, set-classic, set-wellness) → карточки, страница товара, корзина |
 
 ## Технические заметки
 
-- Формат карточек — **квадрат 1:1** (сетка сайта), hero — **16:9**, лого — **1:1 с прозрачным фоном** (PNG).
-- Держать **единый фон и свет** во всех карточках, чтобы сетка выглядела как один комплект.
-- Экспорт: JPG (фото) высокого качества; после генерации прогнать через оптимизацию (WebP) при внедрении (шаг U9).
-- Реальный ассортимент (см. `instagram-study.md`) — говяжий + овощной бульон в форматах стекло/заморозка/кубики + костное масло. Каталог сайта нужно будет привести к этим позициям (U9).
+- Карточки — **1:1**, hero — **16:9**, лого — **1:1 PNG с прозрачным фоном**.
+- **Единый фон, свет и форма банки** во всех 12 карточках — это критично, иначе сетка развалится.
+- Имена файлов = **id товара** из каталога (см. таблицу), чтобы внедрение (шаг U9) было простым: `image: '/images/products/<id>.jpg'`.
+- Экспорт JPG высокого качества; при внедрении прогнать в WebP.
+- Реальная упаковка бренда — на скринах Instagram (`instagram-study.pdf`): та же банка, круглая наклейка, HALAL. Держись этого стиля.
