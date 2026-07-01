@@ -9,12 +9,11 @@ export const BRAND = {
 } as const
 
 export const CONTACT = {
-  phone: '+7 (495) 000-00-00',
+  phone: '+7 (929) 884-50-91',
   email: 'hello@bonebouillon.ru',
-  telegram: 'https://t.me/bonebouillon',
-  // TODO: заменить на реальную ссылку Telegram-канала бренда
-  telegramChannel: 'https://t.me/bonebouillon',
-  instagram: 'https://instagram.com/bonebouillon',
+  telegram: 'https://t.me/bone_bouillon',
+  telegramChannel: 'https://t.me/bone_bouillon',
+  instagram: 'https://instagram.com/bone_bouillon',
 } as const
 
 export const formatPrice = (value: number) =>
