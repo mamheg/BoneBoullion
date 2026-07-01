@@ -14,8 +14,8 @@ export function BenefitsBar() {
       <div className="grid gap-6 rounded-card-lg bg-card p-6 shadow-card ring-1 ring-line/60 sm:grid-cols-2 sm:p-8 lg:grid-cols-4 lg:gap-8">
         {benefits.map(({ icon: Icon, title, text }) => (
           <div key={title} className="flex items-start gap-4">
-            <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-brand-400/90 text-ink">
-              <Icon className="size-6" strokeWidth={2} />
+            <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-brand-500 text-white shadow-[0_4px_12px_rgb(230_158_38/0.3)]">
+              <Icon className="size-6" strokeWidth={2.2} />
             </span>
             <div>
               <h3 className="font-display text-base font-bold leading-tight">{title}</h3>
