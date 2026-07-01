@@ -18,7 +18,7 @@ export function Hero() {
       <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
         {/* Copy */}
         <motion.div
-          className="order-2 lg:order-1"
+          className="order-1"
           variants={container}
           initial="hidden"
           animate="show"
@@ -54,7 +54,7 @@ export function Hero() {
 
         {/* Visual */}
         <motion.div
-          className="order-1 lg:order-2"
+          className="order-2"
           initial={{ opacity: 0, scale: 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
