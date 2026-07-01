@@ -52,7 +52,7 @@ export function CartLineItem({
             onChange={(n) => setQuantity(product.id, n)}
             size="sm"
           />
-          <span className="font-display font-bold tnum">{formatPrice(lineTotal)}</span>
+          <span className="font-sans font-extrabold tnum">{formatPrice(lineTotal)}</span>
         </div>
       </div>
     </div>

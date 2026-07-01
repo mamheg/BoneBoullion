@@ -26,8 +26,10 @@
   --color-danger: #c0492f;
 
   /* Typography */
-  --font-display: 'Playfair Display', ui-serif, Georgia, serif;
+  --font-display: 'Spectral', ui-serif, Georgia, serif;
   --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  /* Prices/numbers use the sans with tabular figures (not the serif) */
+  --font-price: 'Manrope', ui-sans-serif, system-ui, sans-serif;
 
   /* Radii */
   --radius-card: 20px;
