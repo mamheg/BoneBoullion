@@ -18,6 +18,44 @@ _ALLOWED_IMAGE = {"image/jpeg", "image/png", "image/webp"}
 _MAX_BYTES = 8 * 1024 * 1024
 
 
+def _serialize_admin_product(p: Product) -> dict:
+    return {
+        "id": p.id,
+        "slug": p.slug,
+        "name": p.name,
+        "description": p.description or "",
+        "price": p.price,
+        "oldPrice": p.old_price,
+        "volume": p.volume or "",
+        "accent": p.accent,
+        "categoryId": p.category_id,
+        "badges": list(p.badges or []),
+        "inStock": p.in_stock,
+        "isActive": p.is_active,
+        "composition": p.composition,
+        "nutrition": p.nutrition,
+        "sortOrder": p.sort_order,
+        "images": [{"id": img.id, "url": img.url} for img in p.images],
+    }
+
+
+# ── Read (admin sees inactive too) ─────────────────────────────────────────
+@router.get("/products")
+def list_all_products(db: Session = Depends(get_db)):
+    rows = db.execute(
+        select(Product).order_by(Product.sort_order, Product.id)
+    ).scalars().all()
+    return [_serialize_admin_product(p) for p in rows]
+
+
+@router.get("/products/{product_id}")
+def get_admin_product(product_id: int, db: Session = Depends(get_db)):
+    p = db.get(Product, product_id)
+    if not p:
+        raise HTTPException(status_code=404, detail="Товар не найден")
+    return _serialize_admin_product(p)
+
+
 # ── Categories ─────────────────────────────────────────────────────────────
 @router.post("/categories")
 def create_category(payload: CategoryIn, db: Session = Depends(get_db)):
