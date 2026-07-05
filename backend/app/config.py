@@ -12,6 +12,8 @@ class Settings(BaseSettings):
     bot_token: str = ""
     telegram_chat_id: str = ""
     telegram_webhook_secret: str = ""
+    # Comma/newline separated proxy list for reaching Telegram (RU hosts).
+    telegram_proxies: str = ""
     admin_username: str = "admin"
     admin_password: str = "change-me"
     cors_origins: str = "http://localhost:3000,http://localhost:5173"
