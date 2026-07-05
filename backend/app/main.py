@@ -21,10 +21,14 @@ from app.routers import (
 settings = get_settings()
 app = FastAPI(title="BONE BOUILLON API", version="1.0.0")
 
+_origins = settings.cors_origin_list
+_allow_all = "*" in _origins
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.cors_origin_list,
-    allow_credentials=True,
+    allow_origins=["*"] if _allow_all else _origins,
+    # Wildcard origins can't be combined with credentials; we use Bearer tokens,
+    # not cookies, so disabling credentials in that mode is safe.
+    allow_credentials=not _allow_all,
     allow_methods=["*"],
     allow_headers=["*"],
 )
