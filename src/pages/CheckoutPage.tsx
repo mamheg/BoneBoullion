@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import { Check, ChevronLeft } from 'lucide-react'
 import { api } from '@/services/api'
 import { formatPrice, CONTACT } from '@/brand/config'
@@ -27,6 +27,12 @@ export function CheckoutPage() {
   const [city, setCity] = useState('Москва')
   const [address, setAddress] = useState('')
   const [comment, setComment] = useState('')
+  const [slotId, setSlotId] = useState<number | undefined>(undefined)
+
+  const { data: slots = [] } = useQuery({
+    queryKey: ['delivery-slots'],
+    queryFn: () => api.getDeliverySlots(),
+  })
 
   const order = useMutation<OrderResult, Error, OrderDraft>({
     mutationFn: (draft) => api.createOrder(draft),
@@ -48,14 +54,22 @@ export function CheckoutPage() {
   }
 
   const contactsValid = name.trim().length > 1 && phone.replace(/\D/g, '').length >= 10
-  const deliveryValid = city.trim().length > 0 && (method === 'pickup' || address.trim().length > 3)
+  const deliveryValid =
+    city.trim().length > 0 &&
+    (method === 'pickup' || (address.trim().length > 3 && (slots.length === 0 || !!slotId)))
 
   const submit = (e: FormEvent) => {
     e.preventDefault()
     if (!contactsValid || !deliveryValid) return
     order.mutate({
       customer: { name, phone, email: email || undefined },
-      delivery: { method, city, address: method === 'courier' ? address : undefined, comment },
+      delivery: {
+        method,
+        city,
+        address: method === 'courier' ? address : undefined,
+        comment,
+        slotId: method === 'courier' ? slotId : undefined,
+      },
       items: lines.map((l) => ({
         productId: l.product.id,
         title: l.product.name,
@@ -172,6 +186,30 @@ export function CheckoutPage() {
                   <label className={labelClass} htmlFor="address">Адрес доставки*</label>
                   <input id="address" className={inputClass} value={address}
                     onChange={(e) => setAddress(e.target.value)} placeholder="Улица, дом, квартира" />
+                </div>
+              )}
+              {method === 'courier' && slots.length > 0 && (
+                <div>
+                  <label className={labelClass}>Время доставки*</label>
+                  <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                    {slots.slice(0, 9).map((s) => {
+                      const label = `${new Date(s.date).toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' })}, ${s.start}–${s.end}`
+                      return (
+                        <button
+                          key={s.id}
+                          type="button"
+                          onClick={() => setSlotId(s.id)}
+                          className={`rounded-xl border px-3 py-2 text-xs font-medium transition-colors ${
+                            slotId === s.id
+                              ? 'border-brand-600 bg-brand-50 text-brand-700'
+                              : 'border-line bg-white text-ink'
+                          }`}
+                        >
+                          {label}
+                        </button>
+                      )
+                    })}
+                  </div>
                 </div>
               )}
               <div>

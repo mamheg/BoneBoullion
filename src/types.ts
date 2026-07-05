@@ -57,6 +57,15 @@ export interface DeliveryInfo {
   city: string
   address?: string
   comment?: string
+  slotId?: number
+}
+
+export interface DeliverySlot {
+  id: number
+  date: string
+  start: string
+  end: string
+  available: number
 }
 
 export interface OrderDraft {
